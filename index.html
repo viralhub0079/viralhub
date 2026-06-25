@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Viral Hub</title>
 </head>
-<body style="background:black;color:white;text-align:center;">
+
+<body style="background:black;color:white;text-align:center;padding:20px;">
+
 <h1>Viral Hub</h1>
-<p>Welcome to my Telegram Mini App</p>
-<button>Watch Ad</button>
+
+<p id="count">Ads Watched: 0/3</p>
+
+<button onclick="watchAd()">
+Watch Ad
+</button>
+
+<div id="content" style="display:none;margin-top:20px;">
+<h2>🔓 Content Unlocked</h2>
+<p>এখানে পরে তোমার ভিডিও বা পোস্ট দিবে</p>
+</div>
+
+<script src='//libtl.com/sdk.js'
+data-zone='11199098'
+data-sdk='show_11199098'>
+</script>
+
+<script>
+
+let ads = 0;
+
+function watchAd(){
+
+show_11199098()
+.then(() => {
+
+ads++;
+
+document.getElementById("count").innerHTML =
+"Ads Watched: " + ads + "/3";
+
+if(ads >= 3){
+
+document.getElementById("content").style.display = "block";
+
+alert("Content Unlocked");
+
+}
+
+})
+
+.catch(() => {
+
+alert("Ad not available");
+
+});
+
+}
+
+</script>
+
 </body>
 </html>
